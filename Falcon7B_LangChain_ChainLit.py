@@ -23,10 +23,10 @@ You are a helpful AI assistant and provide the answer for the question asked pol
 {question}
 """
 
-@cl.langchain_factory
+@cl.langchain_factory(use_async=True)
+
 def factory():
     prompt = PromptTemplate(template=template, input_variables=["question"])
     llm_chain = LLMChain(prompt=prompt, llm=llm)
 
     return llm_chain
-
